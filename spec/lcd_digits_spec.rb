@@ -1,26 +1,31 @@
 class LCD_Digits
 
 	def initialize
-		@numbers = { 0 => { :top    => ".-.\n",
-	  							      :middle => "|.|\n",
-			  					      :bottom => "|_|\n" },
-								 1 => { :top    => "...\n",
-								        :middle => "..|\n",
-								        :bottom => "..|\n" } }
+		@numbers = { 0 => { :top    => ".-.",
+	  							      :middle => "|.|",
+			  					      :bottom => "|_|" },
+								 1 => { :top    => "...",
+								        :middle => "..|",
+								        :bottom => "..|" } }
   end
 
 	def number(digit)
-		@numbers[digit][:top] + \
-		@numbers[digit][:middle] + \
-		@numbers[digit][:bottom]
+		@numbers[digit][:top] + "\n" +\
+		@numbers[digit][:middle] + "\n" +\
+		@numbers[digit][:bottom] + "\n"
 	end
 
 	def row(digits)
 		digits_s = digits.to_s
 		eight_segment = ""
-		digits_s.each_char {|digit| eight_segment += @numbers[digit.to_i][:top]}
-		digits_s.each_char {|digit| eight_segment += @numbers[digit.to_i][:middle]}
-		digits_s.each_char {|digit| eight_segment += @numbers[digit.to_i][:bottom]}
+
+		digits_s.each_char {|digit| eight_segment += @numbers[digit.to_i][:top] + ' '}
+		eight_segment += "\n"
+		digits_s.each_char {|digit| eight_segment += @numbers[digit.to_i][:middle] + ' '}
+		eight_segment += "\n"
+		digits_s.each_char {|digit| eight_segment += @numbers[digit.to_i][:bottom] + ' '}
+		eight_segment += "\n"
+
 		eight_segment
 	end
 
@@ -43,14 +48,14 @@ RSpec.describe LCD_Digits do
 
 	describe "multiple digits in a row" do
 		it "represents 1 digit" do
-			expect(lcd_digit.row(1)).to eq "...\n"\
-																		  "..|\n"\
-																		  "..|\n"
+			expect(lcd_digit.row(1)).to eq "... \n"\
+																		 "..| \n"\
+																		 "..| \n"
 		end
 		it "represents 2 digits" do
-			expect(lcd_digit.row(01)).to eq ".-." + ' ' + "...\n"\
-																		  "|.|" + ' ' + "..|\n"\
-																		  "|_|" + ' ' + "..|\n"
+			expect(lcd_digit.row(10)).to eq "..." + ' ' + ".-. \n"\
+																		  "..|" + ' ' + "|.| \n"\
+																		  "..|" + ' ' + "|_| \n"
 		end
 	end
 
