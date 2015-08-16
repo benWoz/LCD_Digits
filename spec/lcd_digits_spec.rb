@@ -16,6 +16,7 @@ class LCD_Digits
 	end
 
 	def row(digits)
+
 	end
 
 end
@@ -36,6 +37,11 @@ RSpec.describe LCD_Digits do
 	end
 
 	describe "multiple digits in a row" do
+		it "represents 1 digit" do
+			expect(lcd_digit.row(1)).to eq "...\n"\
+																		  "..|\n"\
+																		  "..|\n"
+		end
 		it "represents 2 digits" do
 			expect(lcd_digit.row(01)).to eq ".-." + ' ' + "...\n"\
 																		  "|.|" + ' ' + "..|\n"\
