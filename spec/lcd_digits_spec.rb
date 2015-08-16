@@ -2,8 +2,13 @@ class LCD_Digits
 
 	def initialize
 		@numbers = {
-			0 => ".-.\n|.|\n|_|\n",
-			1 => "...\n..|\n..|\n"
+			0 => ".-.\n" +
+			     "|.|\n" +
+			     "|_|\n",
+			     
+			1 => "...\n" +
+			     "..|\n" + 
+			     "..|\n"
 		}
   end
 
@@ -27,4 +32,5 @@ RSpec.describe LCD_Digits do
 	  	expect(lcd_digit.number(1)).to eq "...\n..|\n..|\n"
 	  end
 	end
+
 end
