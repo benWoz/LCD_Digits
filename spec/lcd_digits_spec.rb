@@ -16,7 +16,12 @@ class LCD_Digits
 	end
 
 	def row(digits)
-
+		digits_s = digits.to_s
+		eight_segment = ""
+		digits_s.each_char {|digit| eight_segment += @numbers[digit.to_i][:top]}
+		digits_s.each_char {|digit| eight_segment += @numbers[digit.to_i][:middle]}
+		digits_s.each_char {|digit| eight_segment += @numbers[digit.to_i][:bottom]}
+		eight_segment
 	end
 
 end
