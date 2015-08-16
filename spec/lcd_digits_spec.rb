@@ -6,6 +6,30 @@ class LCD_Digits
 			  					      :bottom => "|_|" },
 								 1 => { :top    => "...",
 								        :middle => "..|",
+								        :bottom => "..|" },
+								 2 => { :top    => "._.",
+								        :middle => "._|",
+								        :bottom => "|_." },
+								 3 => { :top    => "._.",
+								        :middle => "._|",
+								        :bottom => "._|" },
+								 4 => { :top    => "...",
+								        :middle => "|_|",
+								        :bottom => "..|" },
+								 5 => { :top    => "._.",
+								        :middle => "|_.",
+								        :bottom => "._|" },
+								 6 => { :top    => "._.",
+								        :middle => "|_.",
+								        :bottom => "|_|" },
+								 7 => { :top    => "._.",
+								        :middle => "..|",
+								        :bottom => "..|" },
+								 8 => { :top    => "._.",
+								        :middle => "|_|",
+								        :bottom => "|_|" },
+								 9 => { :top    => "._.",
+								        :middle => "|_|",
 								        :bottom => "..|" } }
   end
 
@@ -61,7 +85,7 @@ RSpec.describe LCD_Digits do
 																		  "..|" + ' ' + "|_|\n"
 		end
 		it "represents all digits" do
-			expect(lcd_digit.row("0123456789")).to eq \
+			expect(lcd_digit.row("0123456789")).to eq ""+\
 			  "._. ... ._. ._. ... ._. ._. ._. ._. ._.\n" + \
 				"|.| ..| ._| ._| |_| |_. |_. ..| |_| |_|\n" + \
 				"|_| ..| |_. ._| ..| ._| |_| ..| |_| ..|\n"
