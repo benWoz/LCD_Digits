@@ -1,11 +1,9 @@
 class LCD_Digits
 
 	def initialize
-		@numbers = {
-			0 => ".-.\n" +
-			     "|.|\n" +
-			     "|_|\n",
-
+		@numbers = { 0 => {  :top    => ".-.\n",
+	  							       :middle => "|.|\n",
+			  					       :bottom => "|_|\n" },
 			1 => "...\n" +
 			     "..|\n" + 
 			     "..|\n"
@@ -13,7 +11,9 @@ class LCD_Digits
   end
 
 	def number(digit)
-		@numbers[digit]
+		@numbers[digit][:top] + \
+		@numbers[digit][:middle] + \
+		@numbers[digit][:bottom]
 	end
 
 	def row(digits)
